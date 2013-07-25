@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html ng-app="repository">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular-resource.min.js"></script>
+    <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.2.0.js"></script>
+    <!--<script src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>-->
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <style type="text/css">
+        .footer {
+            border-top: 1px solid #E5E5E5;
+            margin-top: 10px;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .artifact {
+            color: #ccc;
+            padding-right: 10px;
+        }
+        .com { color: #93a1a1; }
+        .lit { color: #195f91; }
+        .pun, .opn, .clo { color: #93a1a1; }
+        .fun { color: #dc322f; }
+        .str, .atv { color: #D14; }
+        .kwd, .prettyprint .tag { color: #1e347b; }
+        .typ, .atn, .dec, .var { color: teal; }
+        .pln { color: #48484c; }
+
+        .prettyprint {
+            padding: 10px !important;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8 !important;
+        }
+        .prettyprint.linenums {
+            -webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+            -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+            box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+        }
+
+            /* Specify class=linenums on a pre to get line numbering */
+        ol.linenums {
+            margin: 0 0 0 33px; /* IE indents via margin-left */
+        }
+        ol.linenums li {
+            padding-left: 12px;
+            color: #bebec5;
+            line-height: 20px;
+            text-shadow: 0 1px 0 #fff;
+        }
+    </style>
+    <link href="index.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.png" type="image/png" />
+
+    <script>
+        <!-- Register AngularUI Bootstrap library -->
+        angular.module('repository', ['ui.bootstrap']);
+
+        <!-- Artifact search controller -->
+        function SearchCtrl($scope, $http, $document) {
+            $http.get('artifacts.json').success(function(data) {
+                $scope.artifacts = data;
+            });
+        }
+
+        <!-- Repository data controller -->
+        function RepositoryCtrl($window, $scope, $http, $location) {
+            $http.get('repository.json').success(function(data) {
+                $scope.repository = data;
+                $scope.repository.url = $location.absUrl();
+                $window.document.title = data.name + " - " + data.description;
+            });
+        }
+
+        var PomViewCtrl = function ($scope, $http) {
+
+            $scope.open = function () {
+                $scope.shouldBeOpen = true;
+            };
+
+            $scope.close = function () {
+                $scope.shouldBeOpen = false;
+            };
+
+            $http.get($scope.artifact.files.pom.path).success(function(data) {
+                $scope.pom = data.trim();
+            });
+
+            $scope.opts = {
+                backdropFade: true,
+                dialogFade:true
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+
+<!-- Begin page content -->
+<div class="container" style="padding-top:20px;">
+    <div class="row">
+        <!-- Left side of page, repository info -->
+		<span ng-controller="RepositoryCtrl" class="span6">
+		
+		  <!-- welcome block -->
+		  <div class="hidden-phone hero-unit">
+              <h1>{{repository.name}}</h1>
+              <p>{{repository.description}}</p>
+              <p><a class="btn btn-medium" href="{{repository.projectUrl}}">Learn more</a></p>
+              <p class="hidden-tablet">This Maven 2-compatible repository may be used by your preferred build tool to retrieve {{repository.name}} artifacts.</p>
+          </div>
+		  
+	  	  <!-- build tool snippets -->
+          <tabs class="hidden-phone">
+              <pane heading="Moxie">
+                <pre class="prettyprint lang-yaml">registeredRepositories:
+ - {
+   id: '{{repository.id}}'
+   url: '{{repository.url}}'
+   affinity: [ '{{repository.affinity}}' ]
+ }
+
+repositories: 'central', '{{repository.id}}'</pre>
+              </pane>
+              <pane heading="Maven">
+                  <pre class="prettyprint lang-xml">&lt;repository&gt;
+  &lt;id&gt;{{repository.id}}&lt;/id&gt;
+  &lt;name&gt;{{repository.name}}&lt;/name&gt;
+  &lt;url&gt;{{repository.url}}&lt;/url&gt;
+  &lt;layout&gt;default&lt;/layout&gt;
+&lt;/repository&gt;</pre>
+              </pane>
+              <pane heading="Gradle">
+                  <pre class="prettyprint lang-yaml">repositories {
+  maven {
+    url "{{repository.url}}"
+  }
+}</pre>
+              </pane>
+              <pane heading="Grape"><pre class="prettyprint lang-java">@GrabResolver(
+	name='{{repository.id}}',
+	root='{{repository.url}}')</pre></pane>
+              <pane heading="Ivy"><pre class="prettyprint lang-xml">&lt;resolvers&gt;
+  &lt;ibiblio name=&quot;{{repository.id}}&quot; m2compatible=&quot;true&quot;
+    root=&quot;{{repository.url}}&quot; /&gt;
+&lt;/resolvers&gt;</pre></pane>
+          </tabs>
+
+		</span>
+
+        <!-- Right side of page, artifact search -->
+		<span class="span6">
+			<div ng-controller="SearchCtrl">
+                <input ng-model="query" type="text" autofocus="true"
+                       placeholder="search on name, description, groupId, artifactId, or version" class="span6 search-query">
+                <div id="searchResults" ng-show="query.length" style="clear:both;padding-top:10px;">
+                    <p class="lead">Matches for "{{query}}"</p>
+                    <table class="table table-condensed">
+                        <tr ng-repeat="artifact in artifacts | filter:query | orderBy:'-version'">
+                            <td>
+                                <b>{{artifact.name}}</b>
+                                <small>
+                                    <p class="muted">
+                                        {{artifact.groupId}}:{{artifact.artifactId}}:{{artifact.version}}<br/>
+                                        {{artifact.description}}
+                                    </p>
+                                    <p class="muted">
+                                        <span class="artifact" ng-show="artifact.files.package.path.length">
+                                            <a href="{{artifact.files.package.path}}">package</a> <small>({{artifact.files.package.size}})</small>
+                                        </span>
+
+                                        <span class="artifact" ng-show="artifact.files.sources.path.length">
+                                            <a href="{{artifact.files.sources.path}}">sources</a> <small>({{artifact.files.sources.size}})</small>
+                                        </span>
+
+                                        <span class="artifact" ng-show="artifact.files.javadoc.path.length">
+                                            <a href="{{artifact.files.javadoc.path}}">javadoc</a> <small>({{artifact.files.javadoc.size}})</small>
+                                        </span>
+                                    </p>
+                                </small>
+                            </td>
+                            <td style="text-align:right;">
+                                <b>{{artifact.version}}</b><br/>
+                                <small>
+                                    <em>{{artifact.date}}</em>
+                                </small>
+
+                                <div ng-controller="PomViewCtrl">
+                                    <button class="btn btn-mini" ng-click="open()">View Pom</button>
+                                    <div modal="shouldBeOpen" close="close()" options="opts">
+                                        <div class="modal-header">
+                                            <h4>{{artifact.groupId}}:{{artifact.artifactId}}:{{artifact.version}}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <pre class="prettyprint lang-xml">{{pom}}</pre>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a class="btn btn-small" href="{{artifact.files.pom.path}}">Download</a>
+                                            <button class="btn btn-small btn-primary cancel" ng-click="close()">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+		</span>
+
+    </div>
+</div>
+
+<footer class="hidden-tablet hidden-phone footer">
+    <div class="container">
+        <p class="muted credit">Repository built by the <a href="http://moxie.gitblit.com">Moxie Build Toolkit</a>.</p>
+    </div>
+</footer>
+
+</body>
+</html>

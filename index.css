@@ -1,0 +1,19 @@
+.hero-unit {
+	background-color: #002060;
+	color: white;
+}
+.hero-unit > p {
+	color: white;
+}
+
+a {
+	color: #2F58A0;
+}
+
+a:hover {
+	color: #002060;
+}
+
+a:focus {
+	outline: none;
+}

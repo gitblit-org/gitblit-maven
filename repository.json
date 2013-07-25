@@ -1,0 +1,7 @@
+{
+  "name": "Gitblit",
+  "description": "pure Java Git solution",
+  "id": "com.gitblit",
+  "affinity": "com.gitblit",
+  "projectUrl": "http://gitblit.com"
+}
