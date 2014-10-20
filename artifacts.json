@@ -71,6 +71,20 @@
    }
 },
 {
+  "name": "Gitblit API",
+  "description": "Gitblit JSON/RSS API client library",
+  "groupId": "com.gitblit",
+  "artifactId": "gbapi",
+  "version": "1.6.1",
+  "date": "2014-10-20",
+  "files": {
+    "pom": { "path": "com/gitblit/gbapi/1.6.1/gbapi-1.6.1.pom" },
+    "package": { "path": "com/gitblit/gbapi/1.6.1/gbapi-1.6.1.jar", "size":"1.9 MB" },
+    "sources": { "path": "com/gitblit/gbapi/1.6.1/gbapi-1.6.1-sources.jar", "size":"264 KB" },
+    "javadoc": { "path": "com/gitblit/gbapi/1.6.1/gbapi-1.6.1-javadoc.jar", "size":"829 KB" }
+   }
+},
+{
   "name": "Gitblit",
   "description": "pure Java Git solution",
   "groupId": "com.gitblit",
@@ -152,6 +166,20 @@
     "package": { "path": "com/gitblit/gitblit/1.6.0/gitblit-1.6.0.jar", "size":"2.9 MB" },
     "sources": { "path": "com/gitblit/gitblit/1.6.0/gitblit-1.6.0-sources.jar", "size":"1.9 MB" },
     "javadoc": { "path": "com/gitblit/gitblit/1.6.0/gitblit-1.6.0-javadoc.jar", "size":"2.0 MB" }
+   }
+},
+{
+  "name": "Gitblit",
+  "description": "pure Java Git solution",
+  "groupId": "com.gitblit",
+  "artifactId": "gitblit",
+  "version": "1.6.1",
+  "date": "2014-10-20",
+  "files": {
+    "pom": { "path": "com/gitblit/gitblit/1.6.1/gitblit-1.6.1.pom" },
+    "package": { "path": "com/gitblit/gitblit/1.6.1/gitblit-1.6.1.jar", "size":"2.9 MB" },
+    "sources": { "path": "com/gitblit/gitblit/1.6.1/gitblit-1.6.1-sources.jar", "size":"1.9 MB" },
+    "javadoc": { "path": "com/gitblit/gitblit/1.6.1/gitblit-1.6.1-javadoc.jar", "size":"2.2 MB" }
    }
 }
 ]
