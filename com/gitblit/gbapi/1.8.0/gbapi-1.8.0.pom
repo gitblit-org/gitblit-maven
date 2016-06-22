@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.gitblit</groupId>
+  <artifactId>gbapi</artifactId>
+  <version>1.8.0</version>
+  <packaging>jar</packaging>
+  <name>Gitblit API</name>
+  <description>Gitblit JSON/RSS API client library</description>
+  <organization></organization>
+  <url>http://gitblit.com</url>
+  <inceptionYear>2011</inceptionYear>
+
+  <licenses>
+    <license>
+      <name>Apache ASL</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git://github.com/gitblit/gitblit.git</connection>
+    <developerConnection>scm:git:https://github.com/gitblit/gitblit.git</developerConnection>
+    <url>https://github.com/gitblit/gitblit</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>james</id>
+      <name>James Moger</name>
+      <url>https://plus.google.com/u/0/116428776452027956920</url>
+      <organization>VAS</organization>
+      <organizationUrl>http://www.vas.com</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <dependencies>
+  	<!-- compile dependencies -->
+    <dependency>
+      <groupId>rome</groupId>
+      <artifactId>rome</artifactId>
+      <version>0.9</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.3.1</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+
+</project>
+
