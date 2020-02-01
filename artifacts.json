@@ -141,6 +141,20 @@
    }
 },
 {
+  "name": "Gitblit API",
+  "description": "Gitblit JSON/RSS API client library",
+  "groupId": "com.gitblit",
+  "artifactId": "gbapi",
+  "version": "1.9.0",
+  "date": "2020-02-01",
+  "files": {
+    "pom": { "path": "com/gitblit/gbapi/1.9.0/gbapi-1.9.0.pom" },
+    "package": { "path": "com/gitblit/gbapi/1.9.0/gbapi-1.9.0.jar", "size":"213 KB" },
+    "sources": { "path": "com/gitblit/gbapi/1.9.0/gbapi-1.9.0-sources.jar", "size":"289 KB" },
+    "javadoc": { "path": "com/gitblit/gbapi/1.9.0/gbapi-1.9.0-javadoc.jar", "size":"880 KB" }
+   }
+},
+{
   "name": "Gitblit",
   "description": "pure Java Git solution",
   "groupId": "com.gitblit",
@@ -292,6 +306,20 @@
     "package": { "path": "com/gitblit/gitblit/1.8.0/gitblit-1.8.0.jar", "size":"3.5 MB" },
     "sources": { "path": "com/gitblit/gitblit/1.8.0/gitblit-1.8.0-sources.jar", "size":"2.4 MB" },
     "javadoc": { "path": "com/gitblit/gitblit/1.8.0/gitblit-1.8.0-javadoc.jar", "size":"2.3 MB" }
+   }
+},
+{
+  "name": "Gitblit",
+  "description": "pure Java Git solution",
+  "groupId": "com.gitblit",
+  "artifactId": "gitblit",
+  "version": "1.9.0",
+  "date": "2020-02-01",
+  "files": {
+    "pom": { "path": "com/gitblit/gitblit/1.9.0/gitblit-1.9.0.pom" },
+    "package": { "path": "com/gitblit/gitblit/1.9.0/gitblit-1.9.0.jar", "size":"3.5 MB" },
+    "sources": { "path": "com/gitblit/gitblit/1.9.0/gitblit-1.9.0-sources.jar", "size":"2.5 MB" },
+    "javadoc": { "path": "com/gitblit/gitblit/1.9.0/gitblit-1.9.0-javadoc.jar", "size":"2.2 MB" }
    }
 }
 ]
