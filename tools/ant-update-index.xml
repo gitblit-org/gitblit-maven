@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<project name="gitblit-maven" basedir="." default="updaterepo" xmlns:mx="antlib:org.moxie">
+
+  <property name="moxie.version" value="gbmvn" />
+  <property name="moxie.url" value="http://gitblit.github.io/moxie/maven" />
+  <property name="moxie.jar" value="moxie-toolkit-${moxie.version}.jar" />
+  <property name="moxie.dir" value="${basedir}" />
+
+  <!-- The default is this project file located in the 'tools' folder of the gitblit-maven repo -->
+  <property name="maven.directory" value="${basedir}/.." />
+
+  <!-- Download Moxie from it's Maven repository to moxie.dir
+  <mkdir dir="${moxie.dir}" />
+  <get src="${moxie.url}/com/gitblit/moxie/moxie-toolkit/${moxie.version}/${moxie.jar}"
+       dest="${moxie.dir}" skipexisting="true" verbose="true" />
+  -->
+
+  <!-- Register Moxie tasks -->
+  <taskdef uri="antlib:org.moxie">
+    <classpath location="${moxie.dir}/${moxie.jar}" />
+  </taskdef>
+
+
+  <target name="updaterepo">
+    <echo>Updating repository index file for Maven repository ${maven.directory}</echo>
+    <mx:repoupdate basedir="${maven.directory}" allowsnapshots="false" />
+  </target>
+
+</project>
