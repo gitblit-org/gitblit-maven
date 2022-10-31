@@ -447,5 +447,19 @@
     "sources": { "path": "com/google/inject/extensions/guice-servlet/4.2.3-gb2/guice-servlet-4.2.3-gb2-sources.jar", "size":"59 KB" },
     "javadoc": { "path": "com/google/inject/extensions/guice-servlet/4.2.3-gb2/guice-servlet-4.2.3-gb2-javadoc.jar", "size":"122 KB" }
    }
+},
+{
+  "name": "Google Guice - Extensions - Servlet",
+  "description": "",
+  "groupId": "com.google.inject.extensions",
+  "artifactId": "guice-servlet",
+  "version": "5.1.0-gb2",
+  "date": "2022-10-31",
+  "files": {
+    "pom": { "path": "com/google/inject/extensions/guice-servlet/5.1.0-gb2/guice-servlet-5.1.0-gb2.pom" },
+    "package": { "path": "com/google/inject/extensions/guice-servlet/5.1.0-gb2/guice-servlet-5.1.0-gb2.jar", "size":"82 KB" },
+    "sources": { "path": "com/google/inject/extensions/guice-servlet/5.1.0-gb2/guice-servlet-5.1.0-gb2-sources.jar", "size":"60 KB" },
+    "javadoc": { "path": "com/google/inject/extensions/guice-servlet/5.1.0-gb2/guice-servlet-5.1.0-gb2-javadoc.jar", "size":"121 KB" }
+   }
 }
 ]

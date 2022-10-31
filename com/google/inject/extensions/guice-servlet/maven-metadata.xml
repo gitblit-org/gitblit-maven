@@ -4,12 +4,13 @@
   <artifactId>guice-servlet</artifactId>
   <versioning>
     <latest>4.0-gb2</latest>
-    <release>4.2.3-gb2</release>
+    <release>5.1.0-gb2</release>
     <versions>
       <version>4.0-gb1</version>
       <version>4.0-gb2</version>
       <version>4.2.3-gb2</version>
+      <version>5.1.0-gb2</version>
     </versions>
-    <lastUpdated>20221031204549</lastUpdated>
+    <lastUpdated>20221031212437</lastUpdated>
   </versioning>
 </metadata>
